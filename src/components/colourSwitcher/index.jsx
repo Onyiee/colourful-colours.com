@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
 
-
-
 const colorArray = [
     ["#780206", "#061161"],
     ["#FBD3E9", "#BB377D"],
@@ -18,30 +16,21 @@ const colorArray = [
 
 
 const ColourSwitcher = () => {
-    const [selectedIndex, setSelectedIndex] = useState(5);
+    const [selectedIndex, setSelectedIndex] = useState(0);
 
-     const handlePreviousClick =()=> {
-       if (selectedIndex - 1 < 0){
-           setSelectedIndex(colorArray.length -1)
-       }else {
-           setSelectedIndex(selectedIndex - 1)
-       }
-
+     const handlePreviousClick = () => {
+         selectedIndex - 1 < 0 ? setSelectedIndex(colorArray.length -1) : setSelectedIndex(selectedIndex - 1);
     }
 
     const handleNextClick = () => {
-        if (selectedIndex + 1 >= colorArray.length) {
-            setSelectedIndex(0);
-        }else {
-            setSelectedIndex(selectedIndex + 1);
-        }
+        selectedIndex + 1 >= colorArray.length ? setSelectedIndex(0) : setSelectedIndex(selectedIndex + 1);
     }
 
     console.log(selectedIndex);
     return (
-        <div style={{height:"100vh", width:"100vw", background:`linear-gradient(${colorArray[selectedIndex]})`}}>
-            <button onClick={handlePreviousClick}>Prev</button>
-            <button onClick={handleNextClick}>Next</button>
+        <div className="container" style={{height:"100vh", background:`linear-gradient(${colorArray[selectedIndex]})`}}>
+            <i onClick={handlePreviousClick} className="fa-sharp fa-solid fa-chevron-left fa-3x" />
+            <i onClick={handleNextClick} className="fa-sharp fa-solid fa-chevron-right fa-3x" />
         </div>
     );
 };

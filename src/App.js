@@ -1,4 +1,3 @@
-import './App.css';
 import ColourSwitcher from "./components/colourSwitcher";
 
 function App() {
